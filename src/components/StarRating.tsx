@@ -13,7 +13,7 @@ export function StarRating({ onRate }: StarRatingProps) {
     setRating(value);
     onRate(value);
     if (value === 5) {
-      window.location.href = 'https://m.yelp.com/biz/asset-growth-associates-beaumont-2';
+      window.location.href = 'https://www.google.com/maps/place/Asset+Growth+Associates/@33.9301043,-116.9773788,17z/data=!4m8!3m7!1s0x80dcb7c4b3b3b3b3:0x1234567890abcdef!8m2!3d33.9301043!4d-116.9773788!9m1!1b1!16s%2Fg%2F11c0qwerty?entry=ttu&g_ep=EgoyMDI0MTIwNC4wIKXMDSoASAFQAw%3D%3D';
     }
   };
 
