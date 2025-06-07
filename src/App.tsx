@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StarRating } from './components/StarRating';
 import { FeedbackForm } from './components/FeedbackForm';
 import { TrendingUp } from 'lucide-react';
@@ -6,6 +6,7 @@ import { TrendingUp } from 'lucide-react';
 export default function App() {
   const [rating, setRating] = useState<number | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [countdown, setCountdown] = useState(5);
 
   const handleRating = (value: number) => {
     setRating(value);
@@ -20,6 +21,23 @@ export default function App() {
     console.log('Feedback submitted:', data);
     setSubmitted(true);
   };
+
+  // Countdown and redirect effect
+  useEffect(() => {
+    if (submitted && rating && rating < 5) {
+      const timer = setInterval(() => {
+        setCountdown((prev) => {
+          if (prev <= 1) {
+            window.location.href = 'https://assetgrowth.associates';
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+
+      return () => clearInterval(timer);
+    }
+  }, [submitted, rating]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
@@ -61,9 +79,20 @@ export default function App() {
                 <h2 className="text-xl font-semibold text-gray-900 mb-2">
                   Thank you for your feedback!
                 </h2>
-                <p className="text-gray-600">
+                <p className="text-gray-600 mb-4">
                   We'll use your input to improve our service.
                 </p>
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-6">
+                  <p className="text-blue-800 text-sm">
+                    Redirecting to our website in <span className="font-bold text-blue-900">{countdown}</span> seconds...
+                  </p>
+                  <div className="w-full bg-blue-200 rounded-full h-2 mt-3">
+                    <div 
+                      className="bg-blue-600 h-2 rounded-full transition-all duration-1000 ease-linear"
+                      style={{ width: `${((5 - countdown) / 5) * 100}%` }}
+                    ></div>
+                  </div>
+                </div>
               </div>
             )}
           </div>
