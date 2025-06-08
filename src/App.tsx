@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StarRating } from './components/StarRating';
 import { FeedbackForm } from './components/FeedbackForm';
-import { TrendingUp, Star, Sparkles, Zap, Shield, Users } from 'lucide-react';
+import { TrendingUp, Star } from 'lucide-react';
 
 export default function App() {
   const [rating, setRating] = useState<number | null>(null);
@@ -88,47 +88,10 @@ export default function App() {
           <p className="text-2xl md:text-3xl text-purple-200 mb-8 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
             Revolutionary Financial Experience Coming Soon
           </p>
-          <div className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-            <Sparkles className="w-5 h-5 text-yellow-400" />
-            <span className="text-lg text-white">Premium Launch 2025</span>
-          </div>
-        </div>
-
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-          {[
-            {
-              icon: Zap,
-              title: "Lightning Fast",
-              description: "Instant financial insights powered by cutting-edge AI technology"
-            },
-            {
-              icon: Shield,
-              title: "Bank-Grade Security",
-              description: "Your financial data protected with military-grade encryption"
-            },
-            {
-              icon: Users,
-              title: "Expert Guidance",
-              description: "Personalized advice from certified financial professionals"
-            }
-          ].map((feature, index) => (
-            <div
-              key={feature.title}
-              className="group p-12 bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl hover:bg-white/20 transition-all duration-300 hover:scale-105 shadow-2xl animate-fade-in-up"
-              style={{ animationDelay: `${0.9 + index * 0.3}s` }}
-            >
-              <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <feature.icon className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-4">{feature.title}</h3>
-              <p className="text-xl text-purple-200 leading-relaxed">{feature.description}</p>
-            </div>
-          ))}
         </div>
 
         {/* Main Content Card */}
-        <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl shadow-2xl p-12 max-w-4xl mx-auto animate-fade-in-up" style={{ animationDelay: '1.8s' }}>
+        <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl shadow-2xl p-12 max-w-4xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
           <div className="flex flex-col items-center space-y-8">
             {!rating && (
               <div className="text-center">
@@ -184,7 +147,7 @@ export default function App() {
         </div>
 
         {/* Bottom CTA Section */}
-        <div className="text-center mt-20 animate-fade-in-up" style={{ animationDelay: '2.1s' }}>
+        <div className="text-center mt-20 animate-fade-in-up" style={{ animationDelay: '0.9s' }}>
           <h3 className="text-2xl font-bold text-white mb-4">
             Ready to Transform Your Financial Future?
           </h3>
