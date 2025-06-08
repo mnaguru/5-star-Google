@@ -82,11 +82,11 @@ export default function App() {
           <div className="inline-flex items-center justify-center p-6 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-3xl mb-8 shadow-2xl animate-pulse">
             <TrendingUp className="w-16 h-16 text-white" />
           </div>
-          <h1 className="text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent animate-slide-up">
+          <h1 className="text-6xl md:text-7xl font-bold mb-6 text-white animate-slide-up">
             Asset Growth Associates
           </h1>
           <p className="text-2xl md:text-3xl text-purple-200 mb-8 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-            Revolutionary Financial Experience Coming Soon
+            Rate us on Yelp!
           </p>
         </div>
 
