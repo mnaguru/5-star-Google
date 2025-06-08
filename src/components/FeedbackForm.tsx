@@ -1,5 +1,5 @@
 import React from 'react';
-import { Send } from 'lucide-react';
+import { Send, Sparkles } from 'lucide-react';
 
 interface FeedbackFormProps {
   onSubmit: (data: {
@@ -23,9 +23,9 @@ export function FeedbackForm({ onSubmit }: FeedbackFormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-6">
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+        <label htmlFor="name" className="block text-lg font-medium text-white mb-3">
           Name
         </label>
         <input
@@ -33,13 +33,13 @@ export function FeedbackForm({ onSubmit }: FeedbackFormProps) {
           name="name"
           id="name"
           required
-          className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          className="w-full py-4 px-6 bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl text-white placeholder-white/60 focus:outline-none focus:ring-4 focus:ring-yellow-400/50 focus:border-yellow-400/50 transition-all duration-300"
           placeholder="Your name"
         />
       </div>
 
       <div>
-        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+        <label htmlFor="phone" className="block text-lg font-medium text-white mb-3">
           Phone Number
         </label>
         <input
@@ -47,44 +47,45 @@ export function FeedbackForm({ onSubmit }: FeedbackFormProps) {
           name="phone"
           id="phone"
           required
-          className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          className="w-full py-4 px-6 bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl text-white placeholder-white/60 focus:outline-none focus:ring-4 focus:ring-yellow-400/50 focus:border-yellow-400/50 transition-all duration-300"
           placeholder="Your phone number"
         />
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-          Email <span className="text-gray-500 text-sm">(optional)</span>
+        <label htmlFor="email" className="block text-lg font-medium text-white mb-3">
+          Email <span className="text-purple-300 text-base">(optional)</span>
         </label>
         <input
           type="email"
           name="email"
           id="email"
-          className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          className="w-full py-4 px-6 bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl text-white placeholder-white/60 focus:outline-none focus:ring-4 focus:ring-yellow-400/50 focus:border-yellow-400/50 transition-all duration-300"
           placeholder="your@email.com"
         />
       </div>
 
       <div>
-        <label htmlFor="feedback" className="block text-sm font-medium text-gray-700 mb-1">
-          Your Feedback
+        <label htmlFor="feedback" className="block text-lg font-medium text-white mb-3">
+          Your Vision for the Future
         </label>
         <textarea
           name="feedback"
           id="feedback"
           required
           rows={4}
-          className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          placeholder="Please share your thoughts..."
+          className="w-full py-4 px-6 bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl text-white placeholder-white/60 focus:outline-none focus:ring-4 focus:ring-yellow-400/50 focus:border-yellow-400/50 transition-all duration-300 resize-none"
+          placeholder="Share your thoughts on how we can revolutionize financial services..."
         />
       </div>
 
       <button
         type="submit"
-        className="w-full flex items-center justify-center px-4 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+        className="w-full flex items-center justify-center px-8 py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-bold text-xl rounded-2xl shadow-2xl hover:scale-105 transition-all duration-300 hover:shadow-yellow-400/25 group"
       >
-        <Send className="w-4 h-4 mr-2" />
-        Submit Feedback
+        <Sparkles className="w-6 h-6 mr-3 group-hover:rotate-12 transition-transform duration-300" />
+        Share Your Vision
+        <Send className="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform duration-300" />
       </button>
     </form>
   );
