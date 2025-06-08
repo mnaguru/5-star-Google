@@ -96,7 +96,7 @@ export default function App() {
             {!rating && (
               <div className="text-center">
                 <h2 className="text-3xl font-bold text-white mb-6">
-                  Help Us Shape the Future
+                  Help Us to Know How We're Doing
                 </h2>
                 <p className="text-xl text-purple-200 mb-8">
                   Rate your current financial service experience
