@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StarRating } from './components/StarRating';
 import { FeedbackForm } from './components/FeedbackForm';
-import { TrendingUp, Star, Sparkles, Zap, Shield, Users } from 'lucide-react';
+import { Star } from 'lucide-react';
 
 export default function App() {
   const [rating, setRating] = useState<number | null>(null);
@@ -40,160 +40,63 @@ export default function App() {
   }, [submitted, rating]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 relative overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Floating Stars */}
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${2 + Math.random() * 2}s`
-            }}
-          >
-            <Star className="w-4 h-4 text-yellow-400 fill-yellow-400 opacity-60" />
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
+      <div className="bg-white rounded-xl shadow-xl p-8 max-w-md w-full">
+        <div className="text-center mb-8">
+          <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mb-4">
+            <Star className="h-8 w-8 text-blue-600" />
           </div>
-        ))}
-        
-        {/* Floating Orbs */}
-        {[...Array(8)].map((_, i) => (
-          <div
-            key={`orb-${i}`}
-            className="absolute rounded-full bg-gradient-to-r from-yellow-400/20 to-orange-500/20 blur-xl animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              width: `${100 + Math.random() * 200}px`,
-              height: `${100 + Math.random() * 200}px`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${8 + Math.random() * 4}s`
-            }}
-          />
-        ))}
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-8 py-20">
-        {/* Header Section */}
-        <div className="text-center mb-20 animate-fade-in">
-          <div className="inline-flex items-center justify-center p-6 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-3xl mb-8 shadow-2xl animate-pulse">
-            <TrendingUp className="w-16 h-16 text-white" />
-          </div>
-          <h1 className="text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent animate-slide-up">
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">
             Asset Growth Associates
           </h1>
-          <p className="text-2xl md:text-3xl text-purple-200 mb-8 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-            Revolutionary Financial Experience Coming Soon
+          <p className="text-gray-600">
+            How was your experience with us?
           </p>
-          <div className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-            <Sparkles className="w-5 h-5 text-yellow-400" />
-            <span className="text-lg text-white">Premium Launch 2025</span>
-          </div>
         </div>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-          {[
-            {
-              icon: Zap,
-              title: "Lightning Fast",
-              description: "Instant financial insights powered by cutting-edge AI technology"
-            },
-            {
-              icon: Shield,
-              title: "Bank-Grade Security",
-              description: "Your financial data protected with military-grade encryption"
-            },
-            {
-              icon: Users,
-              title: "Expert Guidance",
-              description: "Personalized advice from certified financial professionals"
-            }
-          ].map((feature, index) => (
-            <div
-              key={feature.title}
-              className="group p-12 bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl hover:bg-white/20 transition-all duration-300 hover:scale-105 shadow-2xl animate-fade-in-up"
-              style={{ animationDelay: `${0.9 + index * 0.3}s` }}
-            >
-              <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <feature.icon className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-4">{feature.title}</h3>
-              <p className="text-xl text-purple-200 leading-relaxed">{feature.description}</p>
+        <div className="space-y-6">
+          {!rating && (
+            <div className="text-center">
+              <p className="text-lg font-medium text-gray-900 mb-4">
+                Please rate your experience
+              </p>
+              <StarRating onRate={handleRating} />
             </div>
-          ))}
-        </div>
+          )}
 
-        {/* Main Content Card */}
-        <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl shadow-2xl p-12 max-w-4xl mx-auto animate-fade-in-up" style={{ animationDelay: '1.8s' }}>
-          <div className="flex flex-col items-center space-y-8">
-            {!rating && (
-              <div className="text-center">
-                <h2 className="text-3xl font-bold text-white mb-6">
-                  Help Us Shape the Future
-                </h2>
-                <p className="text-xl text-purple-200 mb-8">
-                  Rate your current financial service experience
-                </p>
-                <StarRating onRate={handleRating} />
-                <p className="mt-6 text-sm text-purple-300">
-                  Your feedback drives our innovation
-                </p>
+          {rating && rating < 5 && !submitted && (
+            <div>
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">
+                We'd love to hear your feedback
+              </h2>
+              <FeedbackForm onSubmit={handleFeedbackSubmit} />
+            </div>
+          )}
+
+          {submitted && (
+            <div className="text-center py-8">
+              <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mb-4">
+                <Star className="h-8 w-8 text-green-600" />
               </div>
-            )}
-
-            {rating && rating < 5 && !submitted && (
-              <div className="w-full">
-                <h2 className="text-3xl font-bold text-white mb-8 text-center">
-                  Your Voice Matters
-                </h2>
-                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
-                  <FeedbackForm onSubmit={handleFeedbackSubmit} />
+              <h2 className="text-xl font-semibold text-gray-900 mb-2">
+                Thank you for your feedback!
+              </h2>
+              <p className="text-gray-600 mb-4">
+                We appreciate your input and will use it to improve our services.
+              </p>
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                <p className="text-blue-800 text-sm mb-2">
+                  Redirecting in <span className="font-bold">{countdown}</span> seconds...
+                </p>
+                <div className="w-full bg-blue-200 rounded-full h-2">
+                  <div 
+                    className="bg-blue-600 h-2 rounded-full transition-all duration-1000 ease-linear"
+                    style={{ width: `${((5 - countdown) / 5) * 100}%` }}
+                  ></div>
                 </div>
               </div>
-            )}
-
-            {submitted && (
-              <div className="text-center py-12">
-                <div className="w-20 h-20 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mb-6 mx-auto animate-pulse">
-                  <Star className="w-10 h-10 text-white fill-white" />
-                </div>
-                <h2 className="text-3xl font-bold text-white mb-4">
-                  Thank You for Your Vision!
-                </h2>
-                <p className="text-xl text-purple-200 mb-8">
-                  Your insights are shaping the future of financial services.
-                </p>
-                <div className="bg-gradient-to-r from-purple-800/50 to-blue-800/50 backdrop-blur-lg border border-white/20 rounded-2xl p-6 mt-8">
-                  <p className="text-yellow-400 text-lg mb-4">
-                    Redirecting to our universe in <span className="font-bold text-2xl text-yellow-300">{countdown}</span> seconds...
-                  </p>
-                  <div className="w-full bg-white/20 rounded-full h-3">
-                    <div 
-                      className="bg-gradient-to-r from-yellow-400 to-orange-500 h-3 rounded-full transition-all duration-1000 ease-linear shadow-lg"
-                      style={{ width: `${((5 - countdown) / 5) * 100}%` }}
-                    ></div>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Bottom CTA Section */}
-        <div className="text-center mt-20 animate-fade-in-up" style={{ animationDelay: '2.1s' }}>
-          <h3 className="text-2xl font-bold text-white mb-4">
-            Ready to Transform Your Financial Future?
-          </h3>
-          <p className="text-lg text-purple-200 mb-8">
-            Join thousands of forward-thinking investors already on the waitlist
-          </p>
-          <button className="px-8 py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-bold text-xl rounded-2xl shadow-2xl hover:scale-105 transition-all duration-300 hover:shadow-yellow-400/25">
-            Get Early Access
-          </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
